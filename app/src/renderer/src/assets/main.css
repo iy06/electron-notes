@@ -14,4 +14,11 @@
     @apply font-mono antialiased text-white;
     @apply overflow-hidden;
   }
+  /* windowをドラッグできるようにするスタイル */
+  header {
+    -webkit-app-region: drag;
+  }
+  button {
+    -webkit-app-region: no-drag;
+  }
 }
