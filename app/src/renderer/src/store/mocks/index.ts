@@ -1,6 +1,6 @@
 import { NoteInfo } from '@shared/models'
 
-export const noteMock: NoteInfo[] = [
+export const notesMock: NoteInfo[] = [
   {
     title: `Welcome ⚡️`,
     lastEditTime: new Date().getTime()
