@@ -1,10 +1,17 @@
-import { noteMock } from '@/store/mocks'
+import { notesMock } from '@/store/mocks'
 import { ComponentProps, ReactElement } from 'react'
-import { NotePreview } from './NotePreview'
+import { NotePreview } from '@/components'
 import { twMerge } from 'tailwind-merge'
+import { useNotesList } from '@/hooks/useNotesList'
 
-export const NotePreviewList = ({ className, ...props }: ComponentProps<'ul'>): ReactElement => {
-  if (noteMock.length === 0) {
+export type NotePreviewListProps = ComponentProps<'ul'> & {
+  onSelect?: () => void
+}
+
+export const NotePreviewList = ({ onSelect, className, ...props }: NotePreviewListProps): ReactElement => {
+  const { notes, selectedNoteIndex, handleNoteSelect } = useNotesList({ onSelect })
+
+  if (notesMock.length === 0) {
     return (
       <ul className={twMerge('text-center pt-4', className)}>
         <span>No Notes!</span>
@@ -14,8 +21,13 @@ export const NotePreviewList = ({ className, ...props }: ComponentProps<'ul'>): 
 
   return (
     <ul className={className} {...props}>
-      {noteMock.map((note) => (
-        <NotePreview key={note.title + note.lastEditTime} {...note} />
+      {notes.map((note, index) => (
+        <NotePreview
+          key={note.title + note.lastEditTime}
+          isActive={selectedNoteIndex === index}
+          onClick={handleNoteSelect(index)}
+          {...note}
+        />
       ))}
     </ul>
   )

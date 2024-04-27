@@ -5,12 +5,18 @@ import {
   markdownShortcutPlugin,
   quotePlugin
 } from '@mdxeditor/editor'
+import { useMarkdownEditor } from '@renderer/hooks/useMarkdownEditor'
 import { ReactElement } from 'react'
 
 export const MarkdownEditor = (): ReactElement => {
+  const { selectedNote } = useMarkdownEditor()
+
+  if (!selectedNote) return null
+
   return (
     <MDXEditor
-      markdown={'# Hello from MDXEditor'}
+      key={selectedNote.title}
+      markdown={selectedNote.content}
       plugins={[headingsPlugin(), listsPlugin(), quotePlugin(), markdownShortcutPlugin()]}
       contentEditableClassName="
         outline-none
