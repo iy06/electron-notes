@@ -6,9 +6,8 @@ import {
   quotePlugin
 } from '@mdxeditor/editor'
 import { useMarkdownEditor } from '@renderer/hooks/useMarkdownEditor'
-import { ReactElement } from 'react'
 
-export const MarkdownEditor = (): ReactElement => {
+export const MarkdownEditor = () => {
   const { selectedNote } = useMarkdownEditor()
 
   if (!selectedNote) return null
