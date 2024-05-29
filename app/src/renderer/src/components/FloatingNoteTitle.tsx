@@ -1,9 +1,9 @@
 import { twMerge } from 'tailwind-merge'
-import { ReactElement, ComponentProps } from 'react'
+import { ComponentProps } from 'react'
 import { useAtomValue } from 'jotai'
 import { selectedNoteAtom } from '@renderer/store'
 
-export const FloatingNoteTitle = ({ className, ...props }: ComponentProps<'div'>): ReactElement => {
+export const FloatingNoteTitle = ({ className, ...props }: ComponentProps<'div'>) => {
   const selectedNote = useAtomValue(selectedNoteAtom)
 
   if (!selectedNote) return null

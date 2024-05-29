@@ -1,4 +1,4 @@
-import { ComponentProps, ReactElement } from 'react'
+import { ComponentProps } from 'react'
 import { NotePreview } from '@/components'
 import { twMerge } from 'tailwind-merge'
 import { useNotesList } from '@/hooks/useNotesList'
@@ -8,7 +8,7 @@ export type NotePreviewListProps = ComponentProps<'ul'> & {
   onSelect?: () => void
 }
 
-export const NotePreviewList = ({ onSelect, className, ...props }: NotePreviewListProps): ReactElement => {
+export const NotePreviewList = ({ onSelect, className, ...props }: NotePreviewListProps) => {
   const { notes, selectedNoteIndex, handleNoteSelect } = useNotesList({ onSelect })
   if (!notes) return null
   if (isEmpty(notes)) {

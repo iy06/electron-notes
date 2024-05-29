@@ -1,5 +1,5 @@
 import { NoteInfo } from '@shared/models'
-import { ComponentProps, ReactElement } from 'react';
+import { ComponentProps } from 'react';
 import { cn, formatDateFromMs } from '@renderer/utils'
 
 export type NotePreviewProps = NoteInfo & {
@@ -12,7 +12,7 @@ export const NotePreview = ({
   isActive = false,
   className,
   ...props
-}: NotePreviewProps): ReactElement => {
+}: NotePreviewProps) => {
   const date = formatDateFromMs(lastEditTime)
 
   return (
