@@ -6,8 +6,8 @@ import { useSetAtom } from 'jotai'
 
 export const NewNoteButton = ({ ...props }: ActionButtonProps): ReactElement => {
   const createEmptyNote = useSetAtom(createEmptyNoteAtom)
-  const handleCreation = () => {
-    createEmptyNote()
+  const handleCreation = async () => {
+    await createEmptyNote()
   }
 
   return (
